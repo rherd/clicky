@@ -15,13 +15,13 @@ class App extends Component {
     score: 0
   };
 
-//when you click on a card ... the fish is taken out of the array
+//when you click on a card ... the husky is taken out of the array
   imageClick = event => {
     const currentHusky = event.target.alt;
     const alreadyClicked =
       this.state.huskyClicked.indexOf(currentHusky) > -1;
 
-//if you click on a fish that has already been selected, the game is reset and cards reordered
+//if you click a pic that has already been selected, the game is reset
     if (alreadyClicked) {
       this.setState({
         husky: this.state.husky.sort(function(a, b) {
@@ -32,7 +32,7 @@ class App extends Component {
       });
         alert("You lose. Press 'OK' to play again.");
 
-//if you click on an available fish, your score is increased and cards reordered
+//if you click on a valid choice, scramble them and increase score
     } else {
       this.setState(
         {
@@ -44,7 +44,7 @@ class App extends Component {
           ),
           score: this.state.score + 1
         },
-//if you get all 12 fish corrent you get a congrats message and the game resets        
+//if you get all 12 say congratulations, reset    
         () => {
           if (this.state.score === 12) {
             alert("Congratulations! You won!");
